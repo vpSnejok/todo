@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+// import { Helmet } from 'react-helmet-async'
 import { useNavigate } from 'react-router-dom'
 import classes from './NotFound.module.scss'
 
@@ -11,9 +11,9 @@ export const NotFound = () => {
 
 	return (
 		<>
-			<Helmet>
+			{/* <Helmet>
 				<title>404 - Страница не найдена</title>
-			</Helmet>
+			</Helmet> */}
 
 			<div className={classes.notFoundContainer}>
 				<div className={classes.stars}></div>

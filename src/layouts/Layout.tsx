@@ -1,11 +1,11 @@
-import { Helmet } from 'react-helmet-async'
+// import { Helmet } from 'react-helmet-async'
 import { Outlet } from 'react-router-dom'
 import { Header } from '../components/Header/Header'
 
 export const Layout = () => {
 	return (
 		<>
-			<Helmet>
+			{/* <Helmet>
 				<link rel='preconnect' href='https://fonts.googleapis.com' />
 				<link
 					rel='preconnect'
@@ -16,7 +16,7 @@ export const Layout = () => {
 					href='https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap'
 					rel='stylesheet'
 				/>
-			</Helmet>
+			</Helmet> */}
 			<Header />
 			<Outlet />
 		</>

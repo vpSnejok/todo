@@ -1,45 +1,31 @@
-import { useState } from 'react'
-import { toast, ToastContainer } from 'react-toastify'
+import { useDispatch, useSelector } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
 import { Form } from '../components/Form/Form'
 import { ToDoList } from '../components/ToDoList/ToDoList'
+import { createAction, removeAction, updateAction } from '../features/toDoList'
 import type { ToDo } from '../models/todo-items'
+import type { RootState } from '../store'
 
 export const ToDoListPage = () => {
-	const [todos, setTodos] = useState<ToDo[]>([])
+	const todoList = useSelector((state: RootState) => state.todoList.todos)
+	const dispatch = useDispatch()
 
 	const createNewToDo = (text: string) => {
-		const newToDo: ToDo = {
-			id: todos.length,
-			text: text,
-			isDone: false,
-		}
-		setTodos([...todos, newToDo])
-
-		toast.success('Add new task!')
+		dispatch(createAction(text))
 	}
 
 	const updateToDo = (toDoItem: ToDo) => {
-		const newTodos = todos.map(item => {
-			if (item.id === toDoItem.id) {
-				item.isDone = !item.isDone
-				toast.success('Update task!')
-			}
-			return item
-		})
-		setTodos(newTodos)
+		dispatch(updateAction(toDoItem))
 	}
 
 	const remove = (toDoItem: ToDo) => {
-		const newTodos = todos.filter(todo => todo.id !== toDoItem.id)
-		setTodos(newTodos)
-
-		toast.success('Remove task!')
+		dispatch(removeAction(toDoItem))
 	}
 
 	return (
 		<>
 			<Form createNewToDo={createNewToDo} />
-			<ToDoList todos={todos} updateToDo={updateToDo} remove={remove} />
+			<ToDoList todos={todoList} updateToDo={updateToDo} remove={remove} />
 			<ToastContainer position='bottom-right' />
 		</>
 	)

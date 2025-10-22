@@ -5,6 +5,7 @@ import './assets/scss/normalize.scss'
 import './assets/scss/style.scss'
 import type { ToDo } from './models/todo-items'
 
+import { HelmetProvider } from 'react-helmet-async'
 import { Layout } from './layouts/Layout'
 import { NotFoundPage } from './pages/404'
 import { HomePage } from './pages/HomePage'
@@ -26,15 +27,15 @@ const router = createBrowserRouter(
 			errorElement: <NotFoundPage />,
 			children: [
 				{
-					path: '/', // Будет соответствовать /app/
+					path: '/',
 					element: <HomePage todos={todos} />,
 				},
 				{
-					path: '/todo', // Будет соответствовать /app/todo
+					path: '/todo',
 					element: <ToDoListPage />,
 				},
 				{
-					path: '/list/:id', // Будет соответствовать /app/list/:id
+					path: '/list/:id',
 					element: <ItemDescription todos={todos} />,
 				},
 			],
@@ -49,7 +50,10 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<RouterProvider router={router} />
+		<HelmetProvider>
+			<RouterProvider router={router} />
+		</HelmetProvider>
+
 		{/* <BrowserRouter>
 			<Header />
 			<Routes>

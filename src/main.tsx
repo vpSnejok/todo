@@ -1,18 +1,18 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { RouterProvider } from 'react-router-dom'
-import './assets/scss/normalize.scss'
-import './assets/scss/style.scss'
 
 // import { HelmetProvider } from 'react-helmet-async'
 import { Provider } from 'react-redux'
 import { router } from './router'
 import { store } from './store'
+import { GlobalStyle } from './styles/GlobalStyle'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		{/* <HelmetProvider> */}
 		<Provider store={store}>
+			<GlobalStyle />
 			<RouterProvider router={router} />
 		</Provider>
 

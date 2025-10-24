@@ -6,13 +6,11 @@ import { RouterProvider } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { router } from './router'
 import { store } from './store'
-import { GlobalStyle } from './styles/GlobalStyle'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		{/* <HelmetProvider> */}
 		<Provider store={store}>
-			<GlobalStyle />
 			<RouterProvider router={router} />
 		</Provider>
 
